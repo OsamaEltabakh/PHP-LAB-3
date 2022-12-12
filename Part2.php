@@ -29,10 +29,10 @@ border-radius: 10%;
 }
 
 </style>
-<H2> PHP CLASS Registration </H2>
 </head>
-<body>
 
+<body>
+<H2> PHP CLASS Registration </H2>
 
 <?php
 
