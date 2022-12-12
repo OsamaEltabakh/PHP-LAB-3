@@ -106,7 +106,7 @@ if (isset ($_POST['submit'])) {
             </tr>
             <tr>
                 <td><label>Agree:</label></td>
-                <td><input type="checkbox" name="agree" value="<?php echo $agree;?>">
+                <td><input type="checkbox" name="agree">
                 <span class="error">*<?php echo $agreeErr;?></span></td>
             </tr>
                 
