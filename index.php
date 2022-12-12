@@ -4,7 +4,6 @@ $nameErr = $emailErr = $genderErr = $detailsErr =$coursesErr =$agreeErr = "";
 $name = $email =$group = $gender = $details =$courses =$agree = "";
 
 if (isset ($_POST['submit'])) {
-
     if ($_SERVER["REQUEST_METHOD"] == "POST") 
     {
         if (empty($_POST["name"])) {
@@ -14,17 +13,17 @@ if (isset ($_POST['submit'])) {
         $name = $_POST["name"];
         if (!preg_match("/^[a-zA-Z-' ]*$/",$name)) {
             $nameErr = "only letters and space allowed";}
-
-        
         }
+        
+    }
         if (empty($_POST["email"])) {
             $emailErr = "Email is required";
         } else {
             $email = $_POST["email"];
             // check if e-mail address is well-formed
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $emailErr = "<h5>Invalid email format</h5>";} 
-        }
+            $emailErr = "Invalid email format";} 
+        
         }
         if (!empty($_POST["group"])) {
             $group = $_POST["group"];
@@ -73,19 +72,17 @@ if (isset ($_POST['submit'])) {
         <table>
             <tr>
                 <td><label> Name: </label></td>
-                <td><input type="text" name="name" >
-                    <span class="error">* <?php echo $nameErr;?></span>
-                </td>
+                <td><input type="text" name="name" value="<?php echo $name;?>">
+                    <span class="error">* <?php echo $nameErr;?></span></td>
             </tr>
             <tr>
-                <td><label> email:</label> </td>
-                <td> <input type="email" name="email">
-                <span class="error">* <?php echo $emailErr;?></span>
-                </td>
+                <td><label> E-mail:</label> </td>
+                <td> <input type="text" name="email" value="<?php echo $email;?>">
+                <span class="error">* <?php echo $emailErr;?></span></td>
             </tr>
             <tr>
                 <td><label> Group # </label> :</td>
-                <td> <input type="number" name="group"></td>
+                <td> <input type="number" name="group" value="<?php echo $group;?>"></td>
             <tr>
                 <td><label> details: </label></td>
                 <td><textarea name="details" rows="5" cols="50" ></textarea></td>
@@ -109,18 +106,18 @@ if (isset ($_POST['submit'])) {
             </tr>
             <tr>
                 <td><label>Agree:</label></td>
-                <td><input type="checkbox" name="agree">
+                <td><input type="checkbox" name="agree" value="<?php echo $agree;?>">
                 <span class="error">*<?php echo $agreeErr;?></span></td>
             </tr>
                 
             <tr> 
-                <td><input type="submit" name="submit"></td>
+                <td><input type="submit" name="submit" ></td>
             </tr>
         </table>
     </form>
     <?php
         echo"<h1> Your given values are as:</h1>" ;
-        echo "Name".$name;
+        echo "Name:".$name;
 
         echo "<br>";
         echo"E-mail:".$email;
@@ -129,10 +126,10 @@ if (isset ($_POST['submit'])) {
         echo"group".$group;
 
         echo"<br>";
-        echo"class details".$details;
+        echo"class details:".$details;
 
         echo"<br>";
-        echo"Gender".$gender;
+        echo"Gender:".$gender;
 
         echo"<br>";
         echo"Courses are :";
